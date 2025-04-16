@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScooterRentalApp", "ScooterRentalApp\ScooterRentalApp.csproj", "{81AFB152-F048-4A21-9B5E-19189CFE1AA1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{81AFB152-F048-4A21-9B5E-19189CFE1AA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81AFB152-F048-4A21-9B5E-19189CFE1AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81AFB152-F048-4A21-9B5E-19189CFE1AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81AFB152-F048-4A21-9B5E-19189CFE1AA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2F24041-3C76-4174-999D-5513BCAF24CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2F24041-3C76-4174-999D-5513BCAF24CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2F24041-3C76-4174-999D-5513BCAF24CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2F24041-3C76-4174-999D-5513BCAF24CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28720D13-2EAB-483F-BF31-7D4809A605F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28720D13-2EAB-483F-BF31-7D4809A605F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28720D13-2EAB-483F-BF31-7D4809A605F1}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{28720D13-2EAB-483F-BF31-7D4809A605F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28720D13-2EAB-483F-BF31-7D4809A605F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28720D13-2EAB-483F-BF31-7D4809A605F1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {15798209-DA67-4CE3-890A-143244425A55}
+	EndGlobalSection
+EndGlobal
