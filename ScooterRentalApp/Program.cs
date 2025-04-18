@@ -43,7 +43,7 @@ app.MapRazorPages();
 app.MapControllers();
 
 var scope = app.Services.CreateScope();
-var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Client>>();
 //SeedData.Initialize(scope.ServiceProvider, userManager).Wait();
 
 app.Run();

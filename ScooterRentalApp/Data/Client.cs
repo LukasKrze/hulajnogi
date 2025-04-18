@@ -14,9 +14,6 @@ namespace ScooterRentalApp.Data
         [Required]
         public string LastName { get; set; }
 
-        [Required]
-        public string PhoneNumber { get; set; }
-
 
         public ICollection<Rental> Rentals { get; set; }
     }
