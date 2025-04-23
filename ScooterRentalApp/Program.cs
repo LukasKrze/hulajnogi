@@ -12,6 +12,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<Client>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 //builder.Services.AddControllersWithViews();
 
@@ -44,6 +45,7 @@ app.MapControllers();
 
 var scope = app.Services.CreateScope();
 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Client>>();
-//SeedData.Initialize(scope.ServiceProvider, userManager).Wait();
+var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+SeedData.Initialize(dbContext, userManager).Wait();
 
 app.Run();
