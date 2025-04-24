@@ -2,6 +2,6 @@
 {
     public static class SystemRoles
     {
-        public static string Administrator = "Administrator";
+        public static string Administrator = "ADMINISTRATOR";
     }
 }
