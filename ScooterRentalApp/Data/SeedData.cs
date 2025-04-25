@@ -38,6 +38,13 @@ namespace ScooterRentalApp.Data
 
             if (!context.Scooters.OfType<ElectricScooter>().Any(s => s.Model == "E125"))
             {
+                var pricing = new Pricing
+                {
+                    From = DateTime.MinValue,
+                    To = DateTime.MaxValue,
+                    PricePerUnit = 2
+                };
+
                 var electricScooter = new ElectricScooter
                 {
                     Model = "E125",
@@ -47,15 +54,25 @@ namespace ScooterRentalApp.Data
                     Range = 40,
                     SerialNumber = "XYZ1234",
                     YearOfProduction = 2022,
-                    Status = "available"
+                    Pricings = new List<Pricing> { pricing }
                 };
+                
+                pricing.Scooter = electricScooter;
 
+                context.Pricings.Add(pricing);
                 context.Scooters.Add(electricScooter);
                 context.SaveChanges();
             }
 
             if (!context.Scooters.OfType<ManualScooter>().Any(s => s.Model == "M55"))
             {
+                var pricing = new Pricing
+                {
+                    From = DateTime.MinValue,
+                    To = DateTime.MaxValue,
+                    PricePerUnit = 2
+                };
+                
                 var manualScooter = new ManualScooter
                 {
                     Model = "M55",
@@ -63,14 +80,18 @@ namespace ScooterRentalApp.Data
                     HasKickstand = false,
                     MaxSpeed = 30,
                     Range = 40,
-                    SerialNumber = "XYZ1234",
+                    SerialNumber = "ABC32",
                     YearOfProduction = 2022,
-                    Status = "available"
+                    Pricings = new List<Pricing> { pricing }
                 };
+                
+                pricing.Scooter = manualScooter;
 
+                context.Pricings.Add(pricing);
                 context.Scooters.Add(manualScooter);
                 context.SaveChanges();
             }
+
         }
     }
 }

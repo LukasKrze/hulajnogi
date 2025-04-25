@@ -25,10 +25,14 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
 
                     <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Scooter" asp-action="Index">Hulajnogi</a>
+                        </li>
                         @if (SignInManager.IsSignedIn(User))
                         {
+
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="CommonMessages" asp-action="Index">Wspólne wiadomości</a>
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Reservation" asp-action="Index">Rezerwacje i wypożyczenia</a>
                             </li>
                            
                         }

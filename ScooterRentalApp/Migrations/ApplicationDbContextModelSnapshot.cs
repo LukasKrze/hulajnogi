@@ -330,6 +330,9 @@ namespace ScooterRentalApp.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int?>("CurrentRentalId")
+                        .HasColumnType("integer");
+
                     b.Property<bool>("HasKickstand")
                         .HasColumnType("boolean");
 
@@ -344,10 +347,6 @@ namespace ScooterRentalApp.Migrations
                         .HasColumnType("real");
 
                     b.Property<string>("SerialNumber")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("text");
 

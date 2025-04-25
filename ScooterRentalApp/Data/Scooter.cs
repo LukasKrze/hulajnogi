@@ -21,7 +21,7 @@ namespace ScooterRentalApp.Data
         public bool HasKickstand { get; set; }
              
 
-        public string Status { get; set; } // available, rented, under_maintenance
+        public int? CurrentRentalId { get; set; } 
 
         public int YearOfProduction { get; set; }
 
