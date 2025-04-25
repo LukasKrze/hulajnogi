@@ -1,0 +1,71 @@
+1. Główne katalogi i pliki projektu:
+root (główny katalog projektu):
+
+README.md:
+Zawiera ogólne informacje o projekcie, jego celach oraz instrukcje uruchomienia. To pierwszy plik, który może być sprawdzany przez każdego, kto chce zrozumieć, do czego służy projekt i jak z niego korzystać.
+.gitignore:
+Plik, który określa, które pliki i katalogi mają być ignorowane przez system kontroli wersji Git. Zwykle zawiera informacje o plikach generowanych automatycznie, takich jak pliki logów, pliki binarne i pliki konfiguracyjne systemu operacyjnego, które nie powinny być śledzone.
+/ScooterRentalApp (katalog aplikacji):
+
+W tym katalogu znajduje się cała aplikacja. Struktura może różnić się w zależności od frameworku i języka, ale zazwyczaj znajdziesz tu następujące foldery i pliki:
+
+2. Struktura folderów w katalogu ScooterRentalApp:
+/Models:
+
+Hulajnoga.cs:
+Model reprezentujący hulajnogę w systemie. Zawiera właściwości takie jak dostępność hulajnogi, jej ID, status, etc.
+Uzytkownik.cs:
+Model reprezentujący użytkownika, zawierający dane takie jak login, hasło, dane kontaktowe, itd.
+Wypozyczenie.cs:
+Model odpowiadający za logikę wypożyczenia hulajnogi, z danymi dotyczącymi daty wypożyczenia, daty zwrotu, itd.
+Płatność.cs:
+Model odpowiedzialny za przechowywanie informacji o płatnościach za wypożyczenie hulajnogi, w tym metodę płatności i kwotę.
+/Controllers:
+
+HulajnogaController.cs:
+Kontroler zarządzający operacjami związanymi z hulajnogami, takimi jak rejestracja nowych hulajnóg, zarządzanie dostępnością czy aktualizacja statusu hulajnogi.
+UzytkownikController.cs:
+Kontroler odpowiedzialny za zarządzanie użytkownikami, w tym rejestrację, logowanie, modyfikację danych użytkownika.
+WypozyczenieController.cs:
+Kontroler odpowiadający za logikę wypożyczenia hulajnogi przez użytkownika oraz zarządzanie historią wypożyczeń.
+PłatnośćController.cs:
+Kontroler odpowiedzialny za przetwarzanie płatności oraz zarządzanie procesem opłat za wynajem hulajnogi.
+/Views:
+
+Index.cshtml:
+Strona główna aplikacji, zawierająca interfejs do interakcji z systemem – użytkownicy mogą tu rejestrować się, logować, rezerwować hulajnogi i przeglądać dostępność.
+HulajnogiList.cshtml:
+Widok wyświetlający listę dostępnych hulajnóg, ich status i opcje wypożyczenia.
+Rejestracja.cshtml:
+Formularz rejestracji dla nowych użytkowników, umożliwiający tworzenie konta w aplikacji.
+/wwwroot:
+
+/css:
+Folder zawierający pliki CSS odpowiedzialne za stylizację aplikacji. Może zawierać np. plik site.css.
+/js:
+Folder zawierający pliki JavaScript, które zapewniają interaktywność na stronach. Przykład: app.js.
+/images:
+Folder przechowujący obrazy, np. ikony, zdjęcia dla aplikacji.
+/Data:
+
+ApplicationDbContext.cs:
+Klasa odpowiadająca za konfigurację bazy danych i dostęp do danych, np. połączenie z bazą danych SQL, konfiguracja tabel, itp. Zawiera definicje DbSet dla tabel takich jak użytkownicy, hulajnogi i wypożyczenia.
+/Migrations:
+
+Folder zawierający pliki migracji dla Entity Framework, jeśli używasz tej technologii do obsługi bazy danych. Migracje pozwalają na zarządzanie zmianami w schemacie bazy danych.
+3. Pliki konfiguracyjne:
+appsettings.json:
+
+Plik zawierający ustawienia konfiguracyjne aplikacji, takie jak połączenie z bazą danych, klucze API i inne ustawienia środowiskowe.
+Startup.cs:
+
+Plik odpowiedzialny za konfigurację aplikacji, m.in. rejestrację usług w kontenerze DI (Dependency Injection), konfigurację routingu, usług autoryzacji, logowania, etc.
+Program.cs:
+
+Plik, który uruchamia aplikację i ustawia główną logikę startową, takie jak konfiguracja środowiska, uruchomienie serwera, itp.
+4. Pliki testowe:
+/Tests:
+
+Folder, w którym znajdują się testy jednostkowe lub integracyjne dla aplikacji. Można tu znaleźć pliki testowe, które zapewniają, że aplikacja działa zgodnie z założeniami.
+Podsumowanie:
+Projekt ScooterRentalApp jest aplikacją internetową opartą na modelu MVC (Model-View-Controller). Obejmuje wszystkie kluczowe elementy systemu wypożyczalni hulajnóg, w tym zarządzanie hulajnogami, użytkownikami, wypożyczeniami oraz płatnościami. Aplikacja wykorzystuje Entity Framework do zarządzania bazą danych, a widoki są tworzone za pomocą Razor Pages (w technologii ASP.NET). Projekt obejmuje również style CSS i skrypty JavaScript do zapewnienia interaktywności strony.
