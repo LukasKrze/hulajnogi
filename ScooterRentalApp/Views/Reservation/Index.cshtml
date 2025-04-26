@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ScooterRentalApp.Data.Rental>
+
+@{
+    ViewBag.Title = "Rezerwacje i wypożyczenia";
+}
+
+<h2>Rezerwacje i wypożyczenia</h2>
+
+<table class="table">
+    <tr>
+        <th>Klient</th>
+        <th>Hulajnoga</th>
+        <th>Data wypożyczenia</th>
+        <th>Planowany zwrot</th>
+        <th>Data zwrotu</th>
+        <th>Akcja</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Client.Email</td>
+            <td>@item.Scooter.Model</td>
+            <td>@item.RentalDate</td>
+            <td>@item.PlannedReturnDate</td>
+            <td>@item.ReturnDate</td>
+            <td>@if (item.Scooter.CurrentRentalId == null && !item.ReturnDate.HasValue)
+                {
+                    @Html.ActionLink("Wypożycz", "Rent", new {id = item.Id})
+                }
+                else if (item.Scooter.CurrentRentalId == item.Id)
+                {
+                    @Html.ActionLink("Zwróć", "Return", new { id = item.Id })
+                } </td>
+        </tr>
+    }
+</table>

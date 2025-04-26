@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ScooterRentalApp.Data.Scooter>
+
+@{
+    ViewBag.Title = "Hulajnogi";
+}
+
+<h2>Dostępne hulanogi</h2>
+
+<table class="table">
+    <tr>
+        <th>Model</th>
+        <th>Numer seryjny</th>
+        <th>Rok produkcji</th>
+        <th>Akcja</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Model</td>
+            <td>@item.SerialNumber</td>
+            <td>@item.YearOfProduction</td>
+            <td>@Html.ActionLink("Zarezerwuj", "Create", "Reservation", new {scooterId = item.Id})</td>
+        </tr>
+    }
+</table>
