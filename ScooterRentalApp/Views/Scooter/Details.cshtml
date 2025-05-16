@@ -1,0 +1,81 @@
+﻿@model ScooterRentalApp.Models.ScooterViewModel
+
+@{
+    ViewData["Title"] = "Szczegóły";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Szczegóły</h1>
+
+<div>
+
+    @if (Model.Type == 1)
+    {
+        <h4 class="control-label">Hulajnoga manualna</h4>
+    }
+    @if (Model.Type == 2)
+    {
+        <h4 class="control-label">Hulajnoga elektryczna</h4>
+    }
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SerialNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.MaxSpeed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.MaxSpeed)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Range)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Range)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HasKickstand)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HasKickstand)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YearOfProduction)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YearOfProduction)
+        </dd>
+        @if (Model.Type == 1)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.WheelSize)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.WheelSize)
+            </dd>
+        }
+        @if (Model.Type == 2)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.BatteryCapacity)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.BatteryCapacity)
+           </dd>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edytuj</a> |
+    <a asp-action="Index">Powrót do listy</a>
+</div>

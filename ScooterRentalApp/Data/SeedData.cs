@@ -45,7 +45,7 @@ namespace ScooterRentalApp.Data
                     PricePerUnit = 2
                 };
 
-                var electricScooter = new ElectricScooter
+                var scooter = new ElectricScooter
                 {
                     Model = "E125",
                     BatteryCapacity = 120,
@@ -57,10 +57,10 @@ namespace ScooterRentalApp.Data
                     Pricings = new List<Pricing> { pricing }
                 };
                 
-                pricing.Scooter = electricScooter;
+                pricing.Scooter = scooter;
 
                 context.Pricings.Add(pricing);
-                context.Scooters.Add(electricScooter);
+                context.Scooters.Add(scooter);
                 context.SaveChanges();
             }
 

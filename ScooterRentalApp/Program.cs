@@ -1,7 +1,10 @@
+using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ScooterRentalApp.Data;
+using ScooterRentalApp.Models;
+using ScooterRentalApp.Models.Validators;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +21,8 @@ builder.Services.AddDefaultIdentity<Client>(options => options.SignIn.RequireCon
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddScoped<IValidator<ScooterViewModel>, ScooterValidator>();
 
 var app = builder.Build();
 

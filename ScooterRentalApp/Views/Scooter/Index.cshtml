@@ -1,26 +1,84 @@
-﻿@model IEnumerable<ScooterRentalApp.Data.Scooter>
+﻿@model IEnumerable<ScooterRentalApp.Models.ScooterViewModel>
 
 @{
-    ViewBag.Title = "Hulajnogi";
+    ViewData["Title"] = "Lista hulajnóg";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Dostępne hulanogi</h2>
+<h1>Lista hulajnóg</h1>
 
+<p>
+    <a asp-action="Create">Dodaj nową</a>
+</p>
 <table class="table">
-    <tr>
-        <th>Model</th>
-        <th>Numer seryjny</th>
-        <th>Rok produkcji</th>
-        <th>Akcja</th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+    <thead>
         <tr>
-            <td>@item.Model</td>
-            <td>@item.SerialNumber</td>
-            <td>@item.YearOfProduction</td>
-            <td>@Html.ActionLink("Zarezerwuj", "Create", "Reservation", new {scooterId = item.Id})</td>
+            <th>
+                @Html.DisplayNameFor(model => model.Model) <!-- Model -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SerialNumber) <!-- Numer seryjny -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxSpeed) <!-- Maksymalna prędkość -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Range) <!-- Zasięg -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type) <!-- Typ -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasKickstand) <!-- Nóżka -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearOfProduction) <!-- Rok produkcji -->
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SerialNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxSpeed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Range)
+                </td>
+                <td>
+                    @if (item.Type == 1)
+                    {
+                        <span>Manualna</span>
+                    }
+                    @if (item.Type == 2)
+                    {
+                        <span>Elektryczna</span>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HasKickstand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CurrentRentalId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearOfProduction)
+                </td>
+                <td>
+                    @Html.ActionLink("Zarezerwuj", "Create", "Reservation", new { scooterId = item.Id }) |
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Usuń</a>
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

@@ -54,7 +54,8 @@ namespace ScooterRentalApp.Controllers
                 return View(rental);
             }
 
-            if (scooter.Rentals.Any(r => r.RentalDate >= rental.PlannedReturnDate || (r.ReturnDate ?? r.PlannedReturnDate) <= rental.RentalDate))
+            if (scooter.Rentals.Any(r => r.RentalDate <= rental.RentalDate && (r.ReturnDate ?? r.PlannedReturnDate) >= rental.RentalDate
+                || (r.RentalDate <= rental.PlannedReturnDate && (r.ReturnDate ?? r.PlannedReturnDate) >= rental.PlannedReturnDate)))
             {
                 ViewBag.Validation = "Istnieje już rezerwacja w podanym terminie";
                 return View(rental);

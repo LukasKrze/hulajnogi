@@ -6,6 +6,8 @@
 
 <h2>Nowa rezerwacja</h2>
 
+<span class="text-danger">@ViewBag.Validation</span>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
