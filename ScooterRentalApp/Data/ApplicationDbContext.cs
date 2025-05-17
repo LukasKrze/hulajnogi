@@ -31,6 +31,7 @@ namespace ScooterRentalApp.Data
         public DbSet<Pricing> Pricings { get; set; }
         public DbSet<Rental> Rentals { get; set; }
         public DbSet<Scooter> Scooters { get; set; }
+        public DbSet<SupportMessage> SupportMessages { get; set; }
 
     }
 }

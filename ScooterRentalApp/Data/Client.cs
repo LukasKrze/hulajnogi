@@ -14,5 +14,8 @@ namespace ScooterRentalApp.Data
 
 
         public ICollection<Rental> Rentals { get; set; }
+
+        public ICollection<SupportMessage> SupportMessages { get; set; }
+
     }
 }
