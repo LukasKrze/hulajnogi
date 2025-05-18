@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,7 @@ namespace ScooterRentalApp.Controllers
             _validator = validator;
             _context = context;
         }
-
+                
         public async Task<IActionResult> Index()
         {
             return View(await _context.Scooters.Select(s => ScooterViewModel.MapToViewModel(s)).ToListAsync());
@@ -46,11 +47,13 @@ namespace ScooterRentalApp.Controllers
             return View(ScooterViewModel.MapToViewModel(scooter));
         }
 
+        [Authorize(Roles ="ADMINISTRATOR")]
         public IActionResult Create()
         {
             return View();
         }
 
+        [Authorize(Roles = "ADMINISTRATOR")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BatteryCapacity,Id,Model,SerialNumber,MaxSpeed,Range,Type,HasKickstand,YearOfProduction,InitialPrice,WheelSize")] ScooterViewModel scooter)
@@ -77,6 +80,7 @@ namespace ScooterRentalApp.Controllers
             return View(scooter);
         }
 
+        [Authorize(Roles = "ADMINISTRATOR")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -92,6 +96,7 @@ namespace ScooterRentalApp.Controllers
             return View(ScooterViewModel.MapToViewModel(scooter));
         }
 
+        [Authorize(Roles = "ADMINISTRATOR")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("BatteryCapacity,Id,Model,SerialNumber,MaxSpeed,Range,Type,HasKickstand,YearOfProduction,WheelSize")] ScooterViewModel scooter)
@@ -130,6 +135,8 @@ namespace ScooterRentalApp.Controllers
             return View(scooter);
         }
 
+        [Authorize(Roles = "ADMINISTRATOR")]
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -147,6 +154,7 @@ namespace ScooterRentalApp.Controllers
             return View(ScooterViewModel.MapToViewModel(scooter));
         }
 
+        [Authorize(Roles = "ADMINISTRATOR")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

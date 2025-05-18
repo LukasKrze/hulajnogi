@@ -15,7 +15,11 @@
         <th>Data wypożyczenia</th>
         <th>Planowany zwrot</th>
         <th>Data zwrotu</th>
-        <th>Akcja</th>
+
+        @if (!User.IsInRole(SystemRoles.Administrator))
+        {
+            <th>Akcja</th>
+        }
     </tr>
 
     @foreach (var item in Model)
@@ -26,6 +30,8 @@
             <td>@item.RentalDate</td>
             <td>@item.PlannedReturnDate</td>
             <td>@item.ReturnDate</td>
+            @if (!User.IsInRole(SystemRoles.Administrator))
+            {
             <td>@if (item.Scooter.CurrentRentalId == null && !item.ReturnDate.HasValue)
                 {
                     @Html.ActionLink("Wypożycz", "Rent", new {id = item.Id})
@@ -34,6 +40,7 @@
                 {
                     @Html.ActionLink("Zwróć", "Return", new { id = item.Id })
                 } </td>
+            }
         </tr>
     }
 </table>
