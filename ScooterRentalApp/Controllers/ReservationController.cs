@@ -22,22 +22,31 @@ namespace ScooterRentalApp.Controllers
         {
             var rentals = db.Rentals
                 .Include(r => r.Client)
-                .Include(r => r.Scooter)                
-                .Where(r=> r.Client.UserName.ToLower() == Request.HttpContext.User.Identity.Name.ToLower())
-                .ToList();
+                .Include(r => r.Scooter).AsQueryable();
+            
+            if (!User.IsInRole(SystemRoles.Administrator))
+            {
+                rentals = rentals.Where(r => r.Client.UserName.ToLower() == Request.HttpContext.User.Identity.Name.ToLower());
+            }
+
             return View(rentals);
         }
 
         // GET: Rental/Create
         public ActionResult Create(int scooterId)
         {
+            if (User.IsInRole(SystemRoles.Administrator))
+            {
+                return RedirectToAction("Index");
+            }
+
             var scooter = db.Scooters.FirstOrDefault(s => s.Id == scooterId);
             if (scooter == null)
             {
                 return RedirectToAction("Index");
             }
 
-            return View(new Rental { Scooter = scooter, RentalDate= DateTime.Now.AddMinutes(5), PlannedReturnDate = DateTime.Now.AddHours(4) });
+            return View(new Rental { Scooter = scooter, RentalDate = DateTime.Now.AddMinutes(5), PlannedReturnDate = DateTime.Now.AddHours(4) });
         }
 
         // POST: Rental/Create
@@ -45,7 +54,12 @@ namespace ScooterRentalApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(int scooterId, Rental rental)
         {
-            var scooter = db.Scooters.Include(s=>s.Rentals).Include(s => s.Pricings).FirstOrDefault(s => s.Id == scooterId);
+            if (User.IsInRole(SystemRoles.Administrator))
+            {
+                return RedirectToAction("Index");
+            }
+
+            var scooter = db.Scooters.Include(s => s.Rentals).Include(s => s.Pricings).FirstOrDefault(s => s.Id == scooterId);
             rental.Scooter = scooter;
             rental.Pricing = scooter.Pricings.FirstOrDefault();
             if (rental.RentalDate < DateTime.Now)
@@ -70,8 +84,13 @@ namespace ScooterRentalApp.Controllers
 
         public ActionResult Rent(int id)
         {
-            var rental = db.Rentals.Include(r=>r.Scooter).FirstOrDefault(r => r.Id == id);
-            if (rental != null && rental.Scooter!= null && rental.Scooter.CurrentRentalId == null)
+            if (User.IsInRole(SystemRoles.Administrator))
+            {
+                return RedirectToAction("Index");
+            }
+
+            var rental = db.Rentals.Include(r => r.Scooter).FirstOrDefault(r => r.Id == id);
+            if (rental != null && rental.Scooter != null && rental.Scooter.CurrentRentalId == null)
             {
                 rental.Scooter.CurrentRentalId = rental.Id;
                 rental.RentalDate = DateTime.Now;
@@ -84,6 +103,11 @@ namespace ScooterRentalApp.Controllers
 
         public ActionResult Return(int id)
         {
+            if (User.IsInRole(SystemRoles.Administrator))
+            {
+                return RedirectToAction("Index");
+            }
+
             var rental = db.Rentals.Include(r => r.Scooter).FirstOrDefault(r => r.Id == id);
             if (rental != null && rental.Scooter != null && rental.Scooter.CurrentRentalId == id)
             {
