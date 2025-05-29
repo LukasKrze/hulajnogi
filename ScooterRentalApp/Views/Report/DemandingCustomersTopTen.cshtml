@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ScooterRentalApp.Models.DemandingCustomerViewModel>
+
+@{
+    ViewData["Title"] = "10 najbardziej roszczeniowych klientów";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>10 najbardziej roszczeniowych klientów</h1>
+
+<ol>
+    @foreach(var item in Model)
+    {
+        <li>@item.FirstName @item.LastName (@item.Email) - Łączna liczba wiadomości do działu wsparcia: @item.NumberOfMessages</li>
+    }
+</ol>

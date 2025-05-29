@@ -18,7 +18,7 @@
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Wypożyczalnia hulajnóg</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -40,7 +40,19 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="SupportMessage" asp-action="Index">Kontakt z działem wsparcia</a>
                             </li>
-
+                            @if (User.IsInRole(SystemRoles.Administrator))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link text-dark dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                        Raporty
+                                    </a>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item text-dark" asp-controller="Report" asp-action="ProfitableCustomersTopTen">10 najbardziej dochodowych klientów</a>
+                                        <a class="dropdown-item text-dark" asp-controller="Report" asp-action="DemandingCustomersTopTen">10 najbardziej roszczeniowych klientów</a>
+                                        <a class="dropdown-item text-dark" asp-controller="Report" asp-action="RentedScootersTopTen">10 najwięcej razy wypożyczanych hulajnóg</a>
+                                    </div>
+                                </li>
+                            }
                         }
                     </ul>
                     <partial name="_LoginPartial" />

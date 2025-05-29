@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ScooterRentalApp.Models.RentedScooterViewModel>
+
+@{
+    ViewData["Title"] = "10 najwięcej razy wypożyczanych hulajnóg";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>10 najwięcej razy wypożyczanych hulajnóg</h1>
+
+<ol>
+    @foreach(var item in Model)
+    {
+        <li>@item.Model (numer seryjny: @item.SerialNumber) - Łączna liczba wypożyczeń: @item.NumberOfRentals</li>
+    }
+</ol>

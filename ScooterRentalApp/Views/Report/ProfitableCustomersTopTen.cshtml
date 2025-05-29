@@ -1,0 +1,15 @@
+﻿@model IEnumerable<ScooterRentalApp.Models.ProfitableCustomerViewModel>
+
+@{
+    ViewData["Title"] = "10 najbardziej dochodowych klientów";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>10 najbardziej dochodowych klientów</h1>
+
+<ol>
+    @foreach(var item in Model)
+    {
+        <li>@item.FirstName @item.LastName (@item.Email) - Łączny przychód: @item.TotalIncome zł</li>
+    }
+</ol>
