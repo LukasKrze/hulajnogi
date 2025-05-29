@@ -211,7 +211,9 @@ namespace ScooterRentalApp.Controllers
 
             if (!string.IsNullOrEmpty(supportMessage.Message))
             {
+                var rental = _context.Rentals.Include(r => r.Scooter).First(r => r.Id == rentalId);
 
+                supportMessage.Message = $"Dotyczy wypożyczenia z: {rental.RentalDate.ToShortDateString()} {rental.RentalDate.ToShortTimeString()} hulajnogi model: ${rental.Scooter.Model}, numer seryjny: {rental.Scooter.SerialNumber}. Wiadmość od klienta: {supportMessage.Message}";
                 supportMessage.Client = _context.Users.First(u => u.UserName == User.Identity.Name);
                 supportMessage.FromClient = true;
                 supportMessage.Created = DateTime.Now;

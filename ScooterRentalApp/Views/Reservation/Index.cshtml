@@ -32,14 +32,20 @@
             <td>@item.ReturnDate</td>
             @if (!User.IsInRole(SystemRoles.Administrator))
             {
-            <td>@if (item.Scooter.CurrentRentalId == null && !item.ReturnDate.HasValue)
-                {
+                <td>
+                    @if (item.Scooter.CurrentRentalId == null && !item.ReturnDate.HasValue)
+                    {
                         @Html.ActionLink("Wypożycz", "ConfirmPaymentAtRental", "Payment", new { rentalId = item.Id })
-                }
-                else if (item.Scooter.CurrentRentalId == item.Id)
-                {
+                    }
+                    else if (item.Scooter.CurrentRentalId == item.Id)
+                    {
                         @Html.ActionLink("Zwróć", "ConfirmPaymentAtReturn", "Payment", new { rentalId = item.Id })
-                } </td>
+                    }
+                    else if (item.ReturnDate.HasValue)
+                    {
+                        @Html.ActionLink("Złóż reklamację", "Complaint", "SupportMessage", new { rentalId = item.Id })
+                    }
+                </td>
             }
         </tr>
     }

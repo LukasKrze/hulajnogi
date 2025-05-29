@@ -25,8 +25,4 @@
     <PackageReference Include="XLocalizer" Version="1.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Views\SupportMessage\" />
-  </ItemGroup>
-
 </Project>

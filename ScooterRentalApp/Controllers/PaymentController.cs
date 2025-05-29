@@ -36,14 +36,14 @@ namespace ScooterRentalApp.Controllers
         [HttpGet]
         public ActionResult ConfirmPaymentAtRental(int rentalId)
         {
-            var rental = db.Rentals.Include(r => r.Scooter).ThenInclude(s=>s.Pricings).Include(r => r.Pricing).Include(r => r.Payments).FirstOrDefault(r => r.Id == rentalId);
+            var rental = db.Rentals.Include(r => r.Scooter).ThenInclude(s => s.Pricings).Include(r => r.Pricing).Include(r => r.Payments).FirstOrDefault(r => r.Id == rentalId);
             var payment = new PaymentViewModel
             {
                 From = DateTime.Now,
                 To = rental.ReturnDate,
                 PlannedTo = rental.PlannedReturnDate,
                 Model = rental.Scooter.Model,
-               Price = rental.Scooter.Pricings.Last().PricePerUnit,
+                Price = rental.Scooter.Pricings.Last().PricePerUnit,
                 RecentCost = rental.Payments.Sum(p => p.Amount)
             };
 
@@ -108,7 +108,7 @@ namespace ScooterRentalApp.Controllers
             {
                 MapPayment(rental, paymentViewModel, true);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return paymentViewModel.Complaint ? RedirectToAction("Complaint", "SupportMessage", new { rentalId }) : RedirectToAction("Index");
             }
 
             return RedirectToAction("Index");
