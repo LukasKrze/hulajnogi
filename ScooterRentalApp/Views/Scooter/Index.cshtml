@@ -74,6 +74,7 @@
                 </td>
                 <td>
                     <a asp-action="Details" asp-route-id="@item.Id">Szczegóły</a> |
+                    <a asp-action="PricingHistoryl" asp-route-id="@item.Id">Cennik</a> |
                     @if (User.IsInRole(SystemRoles.Administrator))
                     {
                         <a asp-action="Edit" asp-route-id="@item.Id">Edytuj</a> <span>|</span>

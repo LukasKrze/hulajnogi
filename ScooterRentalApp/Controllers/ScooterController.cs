@@ -6,6 +6,7 @@ using FluentValidation;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ScooterRentalApp.Data;
@@ -24,7 +25,7 @@ namespace ScooterRentalApp.Controllers
             _validator = validator;
             _context = context;
         }
-                
+
         public async Task<IActionResult> Index()
         {
             return View(await _context.Scooters.Select(s => ScooterViewModel.MapToViewModel(s)).ToListAsync());
@@ -47,7 +48,24 @@ namespace ScooterRentalApp.Controllers
             return View(ScooterViewModel.MapToViewModel(scooter));
         }
 
-        [Authorize(Roles ="ADMINISTRATOR")]
+        public async Task<IActionResult> PricingHistory(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var scooter = await _context.Scooters.Include(s => s.Pricings)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (scooter == null)
+            {
+                return NotFound();
+            }
+
+            return View(ScooterViewModel.MapToViewModel(scooter));
+        }
+
+        [Authorize(Roles = "ADMINISTRATOR")]
         public IActionResult Create()
         {
             return View();
@@ -65,12 +83,12 @@ namespace ScooterRentalApp.Controllers
             {
                 var model = scooter.MapToModel();
                 model.Pricings = new List<Pricing>
-                { 
-                    new Pricing { From = DateTime.Now, PricePerUnit = scooter.InitialPrice.Value } 
+                {
+                    new Pricing { From = DateTime.Now, PricePerUnit = scooter.InitialPrice.Value }
                 };
-                
+
                 _context.Add(model);
-                
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -169,6 +187,42 @@ namespace ScooterRentalApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+
+        public async Task<IActionResult> AddPricing(int id, [Bind("Id,InitialPrice")] ScooterViewModel scooter)
+        {
+              
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var scooterDb = await _context.Scooters.Include(s => s.Pricings)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (scooterDb == null)
+            {
+                return NotFound();
+            }
+
+            if (ModelState?["InitialPrice"]?.ValidationState != ModelValidationState.Valid)
+            {
+                var initialPrice = scooter.InitialPrice;
+                scooter = ScooterViewModel.MapToViewModel(scooterDb);
+                scooter.InitialPrice = initialPrice;
+                return View(nameof(PricingHistory), scooter);
+            }
+
+            DateTime now = DateTime.Now;
+            foreach (var pr in scooterDb.Pricings.Where(p => p.To == null))
+            {
+                pr.To = now;
+            }
+            var newPricing = new Pricing { From = now, PricePerUnit = scooter.InitialPrice.Value };
+            scooterDb.Pricings.Add( newPricing);
+            _context.Pricings.Add(newPricing);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(PricingHistory), new { id });
+        }
         private bool ScooterExists(int id)
         {
             return _context.Scooters.Any(e => e.Id == id);

@@ -34,11 +34,11 @@
             {
             <td>@if (item.Scooter.CurrentRentalId == null && !item.ReturnDate.HasValue)
                 {
-                    @Html.ActionLink("Wypożycz", "Rent", new {id = item.Id})
+                        @Html.ActionLink("Wypożycz", "ConfirmPaymentAtRental", "Payment", new { rentalId = item.Id })
                 }
                 else if (item.Scooter.CurrentRentalId == item.Id)
                 {
-                    @Html.ActionLink("Zwróć", "Return", new { id = item.Id })
+                        @Html.ActionLink("Zwróć", "ConfirmPaymentAtReturn", "Payment", new { rentalId = item.Id })
                 } </td>
             }
         </tr>

@@ -1,0 +1,24 @@
+﻿@model ScooterRentalApp.Data.SupportMessage
+
+@{
+    ViewData["Title"] = "Formularz reklamacyjny";
+}
+
+<h1>Formularz reklamacyjny</h1>
+
+<h4>Wiadomość do działu wsparcia</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Complaint">
+            <div class="form-group">
+                <label asp-for="Message" class="control-label">Wiadomość</label>
+                <textarea asp-for="Message" class="form-control"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Utwórz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -2,9 +2,11 @@ using FluentValidation;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using NuGet.Repositories;
 using ScooterRentalApp.Data;
 using ScooterRentalApp.Models;
 using ScooterRentalApp.Models.Validators;
+using XLocalizer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +21,15 @@ builder.Services.AddDefaultIdentity<Client>(options => options.SignIn.RequireCon
     .AddEntityFrameworkStores<ApplicationDbContext>();
 //builder.Services.AddControllersWithViews();
 
-builder.Services.AddControllers();
+builder.Services.AddRazorPages().AddXLocalizer<LocalPackageSourceInfo>(options =>
+{
+    options.ModelBindingErrors = new XLocalizer.ErrorMessages.ModelBindingErrors
+    {
+        AttemptedValueIsInvalidAccessor = "Podana wartoœæ '{0}' nie jest poprawna dla pola {1}.", 
+        MissingBindRequiredValueAccessor = "A value for the '{0}' parameter or property was not provided.",
+        // ...
+    };
+}); ;
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddScoped<IValidator<ScooterViewModel>, ScooterValidator>();

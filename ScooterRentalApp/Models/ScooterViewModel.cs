@@ -48,8 +48,13 @@ namespace ScooterRentalApp.Models
         [Display(Name = "Rozmiar kółek")]
         public float? WheelSize { get; set; }
 
-        [Display(Name = "Początkowy koszt za godzinę [zł]")]
+        [Display(Name = "Koszt za godzinę [zł]")]
+        [RegularExpression("^\\d+(\\.\\d{1,2})?$", ErrorMessage = "Koszt musi być liczbą z maksymalnie dwoma miejscami po przecinku")]
+        [Required(ErrorMessage = "Koszt jest wymagany")]
+        [Range(0.01, 1000, ErrorMessage = "Koszt musi być wartością dodatnią mniejszą od 1000 zł")]
         public decimal? InitialPrice { get; set; }
+
+        public List<Pricing> Pricings { get; set; }
 
         public static ScooterViewModel MapToViewModel(Scooter scooter)
         {
@@ -65,7 +70,8 @@ namespace ScooterRentalApp.Models
                 Model = scooter.Model,
                 SerialNumber = scooter.SerialNumber,
                 WheelSize = (scooter as ManualScooter)?.WheelSize ?? 0,
-                YearOfProduction = scooter.YearOfProduction
+                YearOfProduction = scooter.YearOfProduction,
+                Pricings = scooter.Pricings?.ToList()
             };
 
         }

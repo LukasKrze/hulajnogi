@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ScooterRentalApp.Data.Payment>
+
+@{
+    ViewBag.Title = "Płatności";
+}
+
+<h2>Płatności</h2>
+
+<span class="text-danger">@ViewBag.Validation</span>
+
+<table class="table">
+    <tr>
+        <th>Klient</th>
+        <th>Hulajnoga</th>
+        <th>Data wypożyczenia</th>
+        <th>Data płatności</th>
+        <th>Kwota</th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Rental.Client.Email</td>
+            <td>@item.Rental.Scooter.Model</td>
+            <td>@item.Rental.RentalDate</td>
+            <td>@item.Date</td>
+            <td>@item.Amount</td>
+        </tr>
+    }
+</table>

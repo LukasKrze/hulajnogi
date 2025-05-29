@@ -41,7 +41,6 @@ namespace ScooterRentalApp.Data
                 var pricing = new Pricing
                 {
                     From = DateTime.MinValue,
-                    To = DateTime.MaxValue,
                     PricePerUnit = 2
                 };
 
@@ -69,7 +68,6 @@ namespace ScooterRentalApp.Data
                 var pricing = new Pricing
                 {
                     From = DateTime.MinValue,
-                    To = DateTime.MaxValue,
                     PricePerUnit = 2
                 };
                 

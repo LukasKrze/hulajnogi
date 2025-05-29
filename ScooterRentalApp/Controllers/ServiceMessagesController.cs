@@ -194,6 +194,36 @@ namespace ScooterRentalApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public IActionResult Complaint(int rentalId)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Complaint(int rentalId, [Bind("Id,Message,FromClient,Created")] SupportMessage supportMessage)
+        {
+            if (User.IsInRole(SystemRoles.Administrator))
+            {
+                RedirectToAction(nameof(Index));
+            }
+
+            if (!string.IsNullOrEmpty(supportMessage.Message))
+            {
+
+                supportMessage.Client = _context.Users.First(u => u.UserName == User.Identity.Name);
+                supportMessage.FromClient = true;
+                supportMessage.Created = DateTime.Now;
+                _context.Add(supportMessage);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(supportMessage);
+        }
+
+
         private bool SupportMessageExists(int id)
         {
             return _context.SupportMessages.Any(e => e.Id == id);
