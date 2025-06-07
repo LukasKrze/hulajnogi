@@ -5,6 +5,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<partial name="_FilterPartial" />
+
+
 <h1>Lista hulajnóg</h1>
 
 <p>
@@ -20,10 +23,10 @@
                 @Html.DisplayNameFor(model => model.Model) <!-- Model -->
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SerialNumber) <!-- Numer seryjny -->
+                @Html.DisplayNameFor(model => model.Category) <!-- Kategoria -->
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaxSpeed) <!-- Maksymalna prędkość -->
+                @Html.DisplayNameFor(model => model.SerialNumber) <!-- Numer seryjny -->
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Range) <!-- Zasięg -->
@@ -48,10 +51,10 @@
                     @Html.DisplayFor(modelItem => item.Model)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SerialNumber)
+                    @Html.DisplayFor(modelItem => item.Category)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MaxSpeed)
+                    @Html.DisplayFor(modelItem => item.SerialNumber)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Range)

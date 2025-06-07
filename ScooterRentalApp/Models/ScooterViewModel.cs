@@ -7,16 +7,23 @@ namespace ScooterRentalApp.Models
     {
         public int Id { get; set; }
 
-        [Required (ErrorMessage = "{0} jest wymagany")]
+        [Display(Name = "Kategoria")]
+        public int CategoryId { get; set; }
+
+        [Display(Name = "Kategoria")]
+        public string? Category { get; set; }
+
+
+        [Required(ErrorMessage = "{0} jest wymagany")]
         public string Model { get; set; }
 
-        [Display(Name ="Numer seryjny")]
-        [Required(ErrorMessage = "{0} jest wymagany")] 
+        [Display(Name = "Numer seryjny")]
+        [Required(ErrorMessage = "{0} jest wymagany")]
         public string SerialNumber { get; set; }
 
         [Display(Name = "Maksymalna prędkość [km/h]")]
         [Required(ErrorMessage = "{0} jest wymagana")]
-        [Range(0,100, ErrorMessage = "Prędkość hulajnogi musi być nieujemną liczbą rzeczywistą nie większą od 100")]
+        [Range(0, 100, ErrorMessage = "Prędkość hulajnogi musi być nieujemną liczbą rzeczywistą nie większą od 100")]
         public float MaxSpeed { get; set; }
 
         [Display(Name = "Zasięg [km]")]
@@ -32,6 +39,12 @@ namespace ScooterRentalApp.Models
         [Display(Name = "Czy model posiada nóżkę?")]
         public bool HasKickstand { get; set; }
 
+
+        [Display(Name = "Opis")]
+        [Required(ErrorMessage = "{0} jest wymagany")]
+        public string Description { get; set; }
+
+        public string Picture { get; set; }
 
         public int? CurrentRentalId { get; set; }
 
@@ -54,7 +67,7 @@ namespace ScooterRentalApp.Models
         [Range(0.01, 1000, ErrorMessage = "Koszt musi być wartością dodatnią mniejszą od 1000 zł")]
         public decimal? InitialPrice { get; set; }
 
-        public List<Pricing> Pricings { get; set; }
+        public List<Pricing>? Pricings { get; set; }
 
         public static ScooterViewModel MapToViewModel(Scooter scooter)
         {
@@ -71,7 +84,12 @@ namespace ScooterRentalApp.Models
                 SerialNumber = scooter.SerialNumber,
                 WheelSize = (scooter as ManualScooter)?.WheelSize ?? 0,
                 YearOfProduction = scooter.YearOfProduction,
-                Pricings = scooter.Pricings?.ToList()
+                Pricings = scooter.Pricings?.ToList(),
+                Category = scooter.Category.Name,
+                CategoryId = scooter.Category.Id,
+                Description = scooter.Description,
+                Picture = scooter.Picture,
+                InitialPrice = 1
             };
 
         }
@@ -91,6 +109,8 @@ namespace ScooterRentalApp.Models
             scooter.Model = Model;
             scooter.SerialNumber = SerialNumber;
             scooter.YearOfProduction = YearOfProduction;
+            scooter.Picture = Picture;
+            scooter.Description = Description;
             return scooter;
         }
 

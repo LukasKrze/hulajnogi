@@ -11,7 +11,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-
+    <img src="/images/scooters/@Model.Scooter.Picture" class="picture" />
     <div class="form-horizontal">
         <div class="form-group">
             Hulajnoga
@@ -29,5 +29,6 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Rezerwuj</button>
+        <a asp-action="Index" asp-controller="Scooter">Anuluj</a>
     </div>
 }

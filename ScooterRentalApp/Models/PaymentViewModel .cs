@@ -38,7 +38,8 @@ namespace ScooterRentalApp.Models
 
         public bool Complaint { get; set; }
 
-
+        public string ScooterPicture { get; set; }
+        
         public void CalculateCost()
         {
             DateTime to = To ?? PlannedTo.Value;

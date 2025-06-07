@@ -20,3 +20,18 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.picture{
+    height: 250px;
+    width: auto;
+ 
+}
+
+.small-picture {
+    height: 180px;
+    width: auto;
+}
+img {
+    border: 3px solid #555;
+    padding: 5px;
+}

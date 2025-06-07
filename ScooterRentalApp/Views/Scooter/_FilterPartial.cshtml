@@ -1,0 +1,12 @@
+﻿@foreach (Tuple <int?, string> report in ViewBag.Categories)
+{
+    if (report.Item1 == ViewBag.CurentCategoryId)
+    {
+        @Html.Label("", report.Item2, new { @class = "btn btn-success d-inline", style="margin:5px;" })
+    }
+    else
+    {
+        @Html.ActionLink(report.Item2, "Index", new { categoryId = report.Item1 }, new { @class = "btn btn-primary d-inline", style = "margin:5px;" })
+   }
+}
+<hr />

@@ -7,6 +7,12 @@
 
 <h1>Edycja</h1>
 
+<img src="/images/scooters/@Model.Picture" class="picture" />
+
+<br />
+<a asp-action="ChangePicture" asp-route-id="@Model.Id">Zmiana obrazka</a>
+
+
 @if (Model.Type == 1)
 {
     <h4 class="control-label">Hulajnoga manualna</h4>
@@ -24,11 +30,19 @@
                 
             </div>
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Picture" />
+            <input type="hidden" asp-for="InitialPrice" />
             <input type="hidden" asp-for="Type" />
             <div class="form-group">
                 <label asp-for="Model" class="control-label"></label>
                 <input asp-for="Model" class="form-control" />
                 <span asp-validation-for="Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+
+                @(Html.DropDownList("CategoryId", ViewBag.Categories, "--Wybierz kategorię--", new { @class = "form-control" }))
+
             </div>
             <div class="form-group">
                 <label asp-for="SerialNumber" class="control-label"></label>
@@ -76,15 +90,21 @@
                     <span asp-validation-for="BatteryCapacity" class="text-danger"></span>
                 </div>
             }
+
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control" ></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Powrót do listy</a>
 </div>
 
 @section Scripts {

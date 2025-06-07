@@ -1,0 +1,31 @@
+﻿Model;Type;BatteryCapacity - Elektryczna;WheelSize - Manualna;HasKickstand;MaxSpeed;Range;SerialNumber;YearOfProduction;InitialPrice;Category;Description;Picture
+Pro 2;Electric;9758;6,6;TRUE;21;42;GUZTBO-3871;2020;5;1;Hulajnoga Pro 2 o numerze seryjnym GUZTBO-3871 wyprodukowana w roku 2020.;sample1.jpg
+Ninebot;Manual;;7,9;FALSE;20;40;FVULOE-7571;2020;3;1;Hulajnoga Ninebot o numerze seryjnym FVULOE-7571 wyprodukowana w roku 2020.;sample2.jpg
+Scooty 10;Electric;9136;9,4;TRUE;31;26;JDWWYW-9345;2024;3;1;Hulajnoga Scooty 10 o numerze seryjnym JDWWYW-9345 wyprodukowana w roku 2024.;sample3.jpg
+Pro 2;Electric;6380;10;FALSE;23;16;KGARTI-9564;2022;5;1;Hulajnoga Pro 2 o numerze seryjnym KGARTI-9564 wyprodukowana w roku 2022.;sample4.jpg
+Scooty 10;Manual;;7,3;TRUE;32;48;FPGWBW-2733;2021;3;1;Hulajnoga Scooty 10 o numerze seryjnym FPGWBW-2733 wyprodukowana w roku 2021.;sample5.jpg
+Lite 5;Electric;7138;7,6;TRUE;25;50;AOIQUS-7016;2021;2,5;1;Hulajnoga Lite 5 o numerze seryjnym AOIQUS-7016 wyprodukowana w roku 2021.;sample1.jpg
+Max G30;Manual;;10;TRUE;26;38;OFVBPW-2872;2018;4;1;Hulajnoga Max G30 o numerze seryjnym OFVBPW-2872 wyprodukowana w roku 2018.;sample2.jpg
+Lite 5;Electric;11454;7,3;FALSE;32;15;EVIVDT-6220;2023;4;1;Hulajnoga Lite 5 o numerze seryjnym EVIVDT-6220 wyprodukowana w roku 2023.;sample3.jpg
+Max G30;Electric;11307;9,7;FALSE;23;15;HPHQZP-8566;2021;2,5;1;Hulajnoga Max G30 o numerze seryjnym HPHQZP-8566 wyprodukowana w roku 2021.;sample4.jpg
+Scooty 10;Electric;11885;8,4;TRUE;28;36;LOXGJH-3661;2018;4,5;1;Hulajnoga Scooty 10 o numerze seryjnym LOXGJH-3661 wyprodukowana w roku 2018.;sample5.jpg
+Max G30;Electric;7959;9;FALSE;29;45;SZFKKE-6485;2019;4;1;Hulajnoga Max G30 o numerze seryjnym SZFKKE-6485 wyprodukowana w roku 2019.;sample1.jpg
+Pro 2;Electric;7863;7,5;FALSE;34;21;GSNLIJ-4269;2021;4;1;Hulajnoga Pro 2 o numerze seryjnym GSNLIJ-4269 wyprodukowana w roku 2021.;sample2.jpg
+Scooty 10;Electric;8812;8,2;TRUE;20;33;ZVQIBX-9864;2019;3;1;Hulajnoga Scooty 10 o numerze seryjnym ZVQIBX-9864 wyprodukowana w roku 2019.;sample3.jpg
+Ninebot;Electric;11700;8,7;FALSE;32;46;IBDMTU-8259;2019;2;1;Hulajnoga Ninebot o numerze seryjnym IBDMTU-8259 wyprodukowana w roku 2019.;sample4.jpg
+Max G30;Electric;4228;9,8;FALSE;29;21;ARISKO-6258;2018;4;2;Hulajnoga Max G30 o numerze seryjnym ARISKO-6258 wyprodukowana w roku 2018.;sample5.jpg
+Scooty 10;Manual;;7,8;FALSE;35;27;LWCZLT-8145;2023;2;2;Hulajnoga Scooty 10 o numerze seryjnym LWCZLT-8145 wyprodukowana w roku 2023.;sample1.jpg
+Scooty 10;Manual;;8,2;TRUE;33;38;GXPKEP-4006;2020;5;2;Hulajnoga Scooty 10 o numerze seryjnym GXPKEP-4006 wyprodukowana w roku 2020.;sample2.jpg
+Lite 5;Manual;;8,8;FALSE;22;19;OSLKCR-3114;2021;2,5;2;Hulajnoga Lite 5 o numerze seryjnym OSLKCR-3114 wyprodukowana w roku 2021.;sample3.jpg
+Max G30;Electric;9167;9,5;TRUE;27;27;WHESJH-2688;2019;4,5;2;Hulajnoga Max G30 o numerze seryjnym WHESJH-2688 wyprodukowana w roku 2019.;sample4.jpg
+Lite 5;Electric;10120;8,4;TRUE;26;19;MSHTFT-7504;2021;2,5;2;Hulajnoga Lite 5 o numerze seryjnym MSHTFT-7504 wyprodukowana w roku 2021.;sample5.jpg
+Max G30;Electric;7708;9,1;TRUE;32;49;ZLQAYW-1437;2022;3;2;Hulajnoga Max G30 o numerze seryjnym ZLQAYW-1437 wyprodukowana w roku 2022.;sample1.jpg
+Pro 2;Manual;;6,9;TRUE;22;23;FWWSQC-2576;2022;3;2;Hulajnoga Pro 2 o numerze seryjnym FWWSQC-2576 wyprodukowana w roku 2022.;sample2.jpg
+Lite 5;Electric;7319;8,5;FALSE;25;19;YQZYVB-4184;2020;4,5;2;Hulajnoga Lite 5 o numerze seryjnym YQZYVB-4184 wyprodukowana w roku 2020.;sample3.jpg
+Ninebot;Manual;;6,8;TRUE;26;48;MAYDQL-3927;2021;3,5;2;Hulajnoga Ninebot o numerze seryjnym MAYDQL-3927 wyprodukowana w roku 2021.;sample4.jpg
+Max G30;Electric;8022;9;TRUE;29;19;YWFHWW-9204;2024;3;2;Hulajnoga Max G30 o numerze seryjnym YWFHWW-9204 wyprodukowana w roku 2024.;sample5.jpg
+Ninebot;Electric;7975;9;FALSE;25;31;RLMVFP-1576;2022;4,5;2;Hulajnoga Ninebot o numerze seryjnym RLMVFP-1576 wyprodukowana w roku 2022.;sample1.jpg
+Max G30;Manual;;7,6;TRUE;33;26;WYADVW-9673;2022;4;2;Hulajnoga Max G30 o numerze seryjnym WYADVW-9673 wyprodukowana w roku 2022.;sample2.jpg
+Ninebot;Manual;;10;TRUE;30;50;GWHBYF-5913;2021;2,5;2;Hulajnoga Ninebot o numerze seryjnym GWHBYF-5913 wyprodukowana w roku 2021.;sample3.jpg
+Pro 2;Electric;11518;8,6;FALSE;28;31;RFXNLS-7220;2019;5;2;Hulajnoga Pro 2 o numerze seryjnym RFXNLS-7220 wyprodukowana w roku 2019.;sample4.jpg
+Pro 2;Manual;;6,6;FALSE;29;20;UBIKGY-5304;2023;4;2;Hulajnoga Pro 2 o numerze seryjnym UBIKGY-5304 wyprodukowana w roku 2023.;sample5.jpg

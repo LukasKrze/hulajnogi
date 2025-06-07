@@ -1,0 +1,69 @@
+﻿@model ScooterRentalApp.Models.TopTenViewModel
+
+@foreach (KeyValuePair<string, string> report in ViewBag.AllReports)
+{
+    if (report.Key == ViewBag.CurentReport)
+    {
+        @Html.Label("", report.Value, new { @class = "btn btn-success d-inline", style="margin:5px;" })
+    }
+    else
+    {
+        @Html.ActionLink(report.Value, report.Key, new { }, new { @class = "btn btn-primary d-inline", style = "margin:5px;" })
+   }
+}
+<hr />
+<form>
+    @foreach (ReportMode method in Enum.GetValues(typeof(ReportMode)))
+    {
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"
+                   id="@method"
+                   name="Mode"
+                   value="@method" onchange="disableFields()"
+            @(Model.Mode == method ? "checked" : "") />
+            <label class="form-check-label" for="@method">@Html.DisplayFor(m => method)</label>
+        </div>
+    }
+    <input type="submit" value="Zastosuj filtr" class="btn btn-primary d-inline" />
+    <div class="row">
+        <div class="col-sm-4">
+            <label asp-for="Year" class="control-label"></label>
+            <input asp-for="Year" class="form-control" disabled="disabled" />
+            <span asp-validation-for="Year" class="text-danger"></span>
+        </div>
+
+        <div class="col-sm-4">
+            <label asp-for="From" class="control-label"></label>
+            <input type="date" name="From" value="@string.Format("{0:yyyy-MM-dd}", Model.From)" class="form-control" />
+            <span asp-validation-for="From" class="text-danger"></span>
+        </div>
+
+
+        <div class="col-sm-4">
+            <label asp-for="To" class="control-label"></label>
+            <input type="date" name="To" value="@string.Format("{0:yyyy-MM-dd}", Model.To)" class="form-control" />
+            <span asp-validation-for="To" class="text-danger"></span>
+        </div>
+
+    </div>
+</form>
+<hr/>
+<script>
+    function disableFields() {
+        const radio = document.querySelector(`input[name="Mode"]:checked`).value;
+        const year = document.querySelector(`input[name="Year"]`);
+        const from = document.querySelector(`input[name="From"]`);
+        const to = document.querySelector(`input[name="To"]`);
+        if (radio =='CustomRange') {
+            year.setAttribute('disabled','disabled');
+            from.removeAttribute('disabled');
+            to.removeAttribute('disabled');
+        } else {
+            year.removeAttribute('disabled');
+            from.setAttribute('disabled','disabled');
+            to.setAttribute('disabled','disabled');
+        }
+    }
+
+    disableFields();
+</script>

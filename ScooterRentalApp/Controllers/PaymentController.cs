@@ -42,6 +42,7 @@ namespace ScooterRentalApp.Controllers
                 From = DateTime.Now,
                 To = rental.ReturnDate,
                 PlannedTo = rental.PlannedReturnDate,
+                ScooterPicture = rental.Scooter.Picture,
                 Model = rental.Scooter.Model,
                 Price = rental.Scooter.Pricings.Last().PricePerUnit,
                 RecentCost = rental.Payments.Sum(p => p.Amount)
@@ -82,6 +83,7 @@ namespace ScooterRentalApp.Controllers
                 From = rental.RentalDate,
                 To = DateTime.Now,
                 PlannedTo = rental.PlannedReturnDate,
+                ScooterPicture = rental.Scooter.Picture,
                 Model = rental.Scooter.Model,
                 Price = rental.Scooter.Pricings.Last().PricePerUnit,
                 RecentCost = rental.Payments.Sum(p => p.Amount)

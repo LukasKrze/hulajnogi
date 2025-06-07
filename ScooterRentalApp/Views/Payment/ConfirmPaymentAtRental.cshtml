@@ -8,7 +8,7 @@
 <h1>Szczegóły płatności wstępnej</h1>
 
 <div>
-
+    <img src="/images/scooters/@Model.ScooterPicture" class="picture" />
     <dl class="row">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Model)
@@ -77,7 +77,7 @@
         <input type="hidden" asp-for="From" />
         <input type="hidden" asp-for="SerialNumber" />
         <input type="hidden" asp-for="HoursToPay" />
-
+        <input type="hidden" asp-for="ScooterPicture" />
 
         <div class="form-group">
             <input type="submit" value="Potwiedzam uiszczenie opłaty" class="btn btn-primary" />

@@ -1,0 +1,54 @@
+﻿@model ScooterRentalApp.Models.ScooterViewModel
+
+@{
+    ViewData["Title"] = "Zmiana obrazka";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Zmiana obrazka</h1>
+<img src="/images/scooters/@Model.Picture" class="picture" />
+<h3>Aktualny obrazek</h3>
+<div>
+    @if (Model.Type == 1)
+    {
+        <h4 class="control-label">Hulajnoga manualna</h4>
+    }
+    @if (Model.Type == 2)
+    {
+        <h4 class="control-label">Hulajnoga elektryczna</h4>
+    }
+    <hr />
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Model)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Model)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.SerialNumber)
+        </dd>
+        <dt class="col-sm-2">
+
+    </dl>
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label for="file">Wybierz plik:</label>
+            <input type="file" name="file" id="file" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Prześlij</button>
+    </form>
+    <a asp-action="Index">Powrót do listy</a>
+
+</div>

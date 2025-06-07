@@ -24,8 +24,13 @@ namespace ScooterRentalApp.Data
         public int? CurrentRentalId { get; set; } 
 
         public int YearOfProduction { get; set; }
+        public string Description { get; set; }
+        public string Picture { get; set; }
 
-        
+        [Required]
+        public ScooterCategory Category { get; set; }
+
+
         public ICollection<Rental> Rentals { get; set; }
         public ICollection<Pricing> Pricings { get; set; }
     }

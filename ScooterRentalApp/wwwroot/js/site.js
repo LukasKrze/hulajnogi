@@ -23,7 +23,6 @@ var hideScooterFields = function () {
 
 $("input[name='Type']").change(function () {
     var buttonVal = $("input[type='radio'][name='Type']:checked").val();
-    alert(buttonVal);
     hideScooterFields();
 });
 
